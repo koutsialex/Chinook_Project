@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="(local).MelodicaDW"
+  DTS:DTSID="{D21744DC-0689-42D1-A1B3-F8EEC719D864}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=(local);Initial Catalog=MelodicaDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package-{D21744DC-0689-42D1-A1B3-F8EEC719D864}(local).MelodicaDW;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

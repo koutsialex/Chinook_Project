@@ -1,0 +1,378 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/16/2023 1:47:41 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-S4OLJQD0"
+  DTS:CreatorName="LAPTOP-S4OLJQD0\user"
+  DTS:DTSID="{547C53FB-51E6-4FC6-9C7B-CBEEE062EA23}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5314.0"
+  DTS:LocaleID="1032"
+  DTS:ObjectName="Package2"
+  DTS:PackageType="5"
+  DTS:VersionBuild="62"
+  DTS:VersionGUID="{D70E86E6-3F35-4724-BB78-EC811589A692}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(local).MelodicaDataWarehouse]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{7172FED4-E705-40DD-ADD8-6680CD428886}"
+      DTS:ObjectName="(local).MelodicaDataWarehouse">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=MelodicaDataWarehouse;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package2-{7172FED4-E705-40DD-ADD8-6680CD428886}(local).MelodicaDataWarehouse;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(local).MelodicaDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{FFCDC7FB-5A4D-4F7C-8114-193577B6F552}"
+      DTS:ObjectName="(local).MelodicaDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=MelodicaDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package2-{FFCDC7FB-5A4D-4F7C-8114-193577B6F552}(local).MelodicaDW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(local).MelodicaStaging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3B116156-ED77-4FA2-9480-3D8E759506AE}"
+      DTS:ObjectName="(local).MelodicaStaging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=MelodicaStaging;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package2-{3B116156-ED77-4FA2-9480-3D8E759506AE}(local).MelodicaStaging;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[connections.txt]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{46D0FA27-A542-4B31-B443-1162B9DDD4AF}"
+      DTS:ObjectName="connections.txt">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\user\Documents\connections.txt" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[fact reload.txt]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{3C0C559C-EE89-44F2-A772-A6DB9C528C2F}"
+      DTS:ObjectName="fact reload.txt">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\user\Downloads\fact reload.txt" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[fact reload.txt 1]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{4D0FB4EC-3EC6-4CC6-93DE-5F7D98C44A59}"
+      DTS:ObjectName="fact reload.txt 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\user\Downloads\fact reload.txt" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SECOND_ETL2.txt]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{10E01E7A-73EC-4AB8-AC75-F813F1E6C1DA}"
+      DTS:ObjectName="SECOND_ETL2.txt">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\user\Downloads\SECOND_ETL2.txt" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Changes in OLTP"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{86FE8D0C-A286-40BF-B753-8D4F1BA6B629}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Changes in OLTP"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{AE3ACB15-55FA-46DF-95D5-1F54CF93FDB6}"
+          SQLTask:SqlStatementSource="update Chinook.[dbo].[Customer] set &#xA;&#x9;FirstName = 'Louis'&#xA;where [CustomerId] =1;&#xA;&#xA;-- new customer&#xA;INSERT INTO Customer&#xA; ([CustomerId], [FirstName], [LastName], [Company],&#xA;  [Address], [City]&#xA;  ,[Country], [PostalCode]&#xA;  ,[Phone],[Fax], [Email], [SupportRepId])&#xA;VALUES&#xA; (60, 'John', 'Smith', 'Smith Company'&#xA; ,'Dummy Address','Athens','Greece',11526&#xA; ,'12345678901', 'xxxx', 'smith@gmail.com', 4 );&#xA;&#xA;--new sale&#xA;INSERT INTO Invoice&#xA;Values (413, 60, '2023-12-21', 'Dummy Address', 'Athens', NULL, 'Greece', 11526, 0.99)&#xA;&#xA;INSERT INTO InvoiceLine&#xA;Values (2241, 413, 1, 0.99, 1)&#xA;&#xA;--new sale&#xA;INSERT INTO Invoice&#xA;Values (414, 1, '2023-12-21', 'Av. Brigadeiro Faria Lima, 2170', 'São José dos Campos','SP', 'Brazil', 12227-000, 0.99)&#xA;&#xA;INSERT INTO InvoiceLine&#xA;Values (2242, 414, 2, 0.99, 1)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Changes in Staging"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{04621E04-B9A0-4A5B-8F1D-932C07A5C1A9}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Changes in Staging"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3B116156-ED77-4FA2-9480-3D8E759506AE}"
+          SQLTask:SqlStatementSource="drop table CustomerStaging; &#xA;&#xA;SELECT  CustomerID, Company, c.FirstName, c.LastName, c.Address, c.City, c.State, c.PostalCode, c.Country, c.Phone,c.Fax, c.Email, SupportRepId, e.FirstName as EmployeeFirstName, e.LastName as EmployeeLastName&#xA;INTO CustomerStaging&#xA;FROM Chinook.[dbo].Customer as c&#xA;INNER JOIN Chinook.dbo.Employee as e&#xA;&#x9;ON c.SupportRepId = e.EmployeeId&#xA;&#xA;&#xA;insert into InvoiceStaging&#xA;&#x9;([InvoiceId]&#xA;      ,[CustomerId]&#xA;      ,[InvoiceDate]&#xA;      ,[TrackId]&#xA;      ,[UnitPrice]&#xA;      ,[Quantity]&#xA;      ,[Total])&#xA;select&#xA;       l.[InvoiceId]&#xA;      ,[CustomerId]&#xA;      ,[InvoiceDate]&#xA;      ,[TrackId]&#xA;      ,[UnitPrice]&#xA;      ,[Quantity]&#xA;      ,[Total]&#xA;from [Chinook].[dbo].Invoice i&#xA;&#x9;inner join [Chinook].[dbo].[InvoiceLine] l on i.InvoiceId= l.InvoiceId&#xA;where InvoiceDate&gt;='2023-12-20';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create Staging_DimCustomer"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D060282B-A34A-4032-B798-BDE94BC9EAA9}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create Staging_DimCustomer"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3B116156-ED77-4FA2-9480-3D8E759506AE}"
+          SQLTask:SqlStatementSource="create table Staging_DimCustomer (&#xA;        [CustomerKey] [int] IDENTITY(1,1) NOT NULL,&#xA;&#x9;[CustomerId] [int] NULL,&#xA;&#x9;[FirstName] [nvarchar](40) NULL,&#xA;&#x9;[LastName] [nvarchar](20) NULL,&#xA;&#x9;[Company] [nvarchar](80) NULL,&#xA;&#x9;[Address] [nvarchar](70) NULL,&#xA;&#x9;[City] [nvarchar](40) NULL,&#xA;&#x9;[State] [nvarchar](40) NULL,&#xA;&#x9;[Country] [nvarchar](40) NULL,&#xA;&#x9;[PostalCode] [nvarchar](10) NULL,&#xA;&#x9;[Phone] [nvarchar](24) NULL,&#xA;&#x9;[Fax] [nvarchar](24) NULL,&#xA;&#x9;[Email] [nvarchar](60) NULL,&#xA;&#x9;[SupportRepId] [int] NULL,&#xA;&#x9;[EmployeeFirstName] [nvarchar](20) NULL,&#xA;&#x9;[EmployeeLastName] [nvarchar](20) NULL,&#xA;&#x9;[RowIsCurrent] [int] DEFAULT 1 NOT NULL,&#xA;&#x9;[RowStartDate] [date] DEFAULT '2009-01-01' NOT NULL,&#xA;&#x9;[RowEndDate] [date] DEFAULT '9999-12-31' NOT NULL,&#xA;&#x9;[RowChangeReason] [varchar](200) NULL,&#xA;);&#xA;&#xA;Insert into Staging_DimCustomer( &#xA;&#x9;CustomerId,FirstName ,LastName,Company,&#xA;Address,City,State,Country,PostalCode,Phone,Fax,Email,SupportRepId, EmployeeFirstName, EmployeeLastName)&#xA;&#x9;(Select CustomerId,FirstName ,LastName,Company,&#xA;         Address,City,State,Country,&#xA;         case when [PostalCode] is null then 'n/a' else [PostalCode] end,Phone,Fax,Email,SupportRepId, EmployeeFirstName, EmployeeLastName&#xA;from CustomerStaging);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Insert Changes into DimCustomer"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{35FAE40D-A37C-4771-BB8C-3D5FA58833E1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Insert Changes into DimCustomer"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{FFCDC7FB-5A4D-4F7C-8114-193577B6F552}"
+          SQLTask:SqlStatementSource="declare @etldate date = '2023-12-21';&#xA;INSERT INTO DimCustomer&#xA; ([CustomerId],[FirstName],[LastName],[Company],[Address],[City]&#xA;      ,[State],[Country],[PostalCode],[Phone],[Fax],[Email],[SupportRepId], [EmployeeFirstName], [EmployeeLastName]&#xA;        , [RowStartDate], [RowChangeReason])&#xA;SELECT &#xA;      [CustomerId],[FirstName],[LastName],[Company],[Address],[City]&#xA;      ,[State],[Country],[PostalCode],[Phone],[Fax],[Email],[SupportRepId], [EmployeeFirstName], [EmployeeLastName]&#xA;        , @etldate &#x9;  ,ActionName&#xA;FROM&#xA;(&#xA;&#x9;MERGE DimCustomer AS target &#xA;&#x9;&#x9;USING [MelodicaStaging].[dbo].Staging_DimCustomer as source&#xA;&#x9;&#x9;ON target.[CustomerId] = source.[CustomerId]&#xA;&#x9; WHEN MATCHED &#x9; AND &#xA;&#x9; source.FirstName &lt;&gt; target.FirstName &#xA;&#x9; AND target.[RowIsCurrent] = 1 &#xA;&#x9; THEN UPDATE SET&#xA;&#x9;&#x9; target.RowIsCurrent = 0,&#xA;&#x9;&#x9; target.RowEndDate = dateadd(day, -1, @etldate),&#xA;&#x9;&#x9; target.RowChangeReason = 'UPDATED NOT CURRENT'&#xA;&#x9; WHEN NOT MATCHED THEN&#xA;&#x9;   INSERT  (&#xA;       [CustomerId],[FirstName]&#xA;      ,[LastName],[Company],[Address],[City]&#xA;      ,[State],[Country],[PostalCode],[Phone]&#xA;      ,[Fax],[Email],[SupportRepId], [EmployeeFirstName], [EmployeeLastName],&#xA;      [RowStartDate], [RowChangeReason])&#xA;&#x9;   VALUES( source.CustomerId, source.FirstName&#xA;      ,source.LastName,source.Company,source.Address,source.City&#xA;      ,source.State,source.Country,source.PostalCode,source.Phone&#xA;      ,source.Fax,source.Email,source.SupportRepId, source.EmployeeFirstName, source.EmployeeLastName&#xA;&#x9;&#x9;   ,CAST(@etldate AS Date),&#xA;&#x9;&#x9;   'NEW RECORD'&#xA;&#x9;   )&#xA;&#x9;WHEN NOT MATCHED BY Source THEN&#xA;&#x9;&#x9;UPDATE SET &#xA;&#x9;&#x9;&#x9;Target.RowEndDate= dateadd(day, -1, @etldate )&#xA;&#x9;&#x9;&#x9;,target.RowIsCurrent = 0&#xA;&#x9;&#x9;&#x9;,Target.RowChangeReason  = 'SOFT DELETE'&#xA;&#x9;OUTPUT &#xA;&#x9;  source.CustomerId,source.FirstName&#xA;      ,source.LastName,source.Company,source.Address,source.City&#xA;      ,source.State,source.Country,source.PostalCode,source.Phone&#xA;      ,source.Fax,source.Email,source.SupportRepId, source.EmployeeFirstName, source.EmployeeLastName&#xA;&#x9;&#x9;,$Action as ActionName   &#xA;) AS Mrg&#xA;WHERE Mrg.ActionName='UPDATE'&#xA;AND [CustomerId] IS NOT NULL;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Insert Changes into FactInvoice"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{61940762-06E3-4C73-AAC9-9ED2884E333C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Insert Changes into FactInvoice"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{FFCDC7FB-5A4D-4F7C-8114-193577B6F552}"
+          SQLTask:SqlStatementSource="INSERT INTO FactInvoice(&#xA;    InvoiceId, DateKey, CustomerKey, TrackKey, InvoiceDate, UnitPrice, Quantity, Total)&#xA;SELECT i.InvoiceId, d.DateKey, c.CustomerKey, t.TrackKey, i.InvoiceDate, i.UnitPrice, i.Quantity, i.Total&#xA;FROM &#xA;    MelodicaStaging.dbo.InvoiceStaging AS i&#xA;INNER JOIN DimCustomer AS c&#xA;    ON c.CustomerId=i.CustomerId and c.RowIsCurrent=1&#xA;INNER JOIN DimTrack AS t&#xA;    ON t.TrackId=i.TrackId  and c.RowIsCurrent=1&#xA;INNER JOIN DimDate AS d&#xA;    ON d.Date=i.InvoiceDate and c.RowIsCurrent=1&#xA;WHERE InvoiceDate&gt;='2023-12-20'&#xA;&#xA;ALTER TABLE FactInvoice ADD CONSTRAINT FK_FactTrack FOREIGN KEY (TrackKey)&#xA;    REFERENCES DimTrack(TrackKey);&#xA;&#xA;ALTER TABLE FactInvoice ADD CONSTRAINT FK_FactCustomer FOREIGN KEY (CustomerKey)&#xA;    REFERENCES DimCustomer(CustomerKey);&#xA;&#xA;ALTER TABLE FactInvoice ADD CONSTRAINT FK_FactDate FOREIGN KEY (DateKey)&#xA;    REFERENCES DimDate(DateKey);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{732DC196-CF8B-4DBE-A0A8-68E4FFBBF25A}"
+      DTS:From="Package\Changes in OLTP"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Changes in Staging"
+      DTS:Value="2" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{FBC1ACCF-836B-4051-9F02-5E9D3B759469}"
+      DTS:From="Package\Changes in Staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Create Staging_DimCustomer"
+      DTS:Value="2" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{B1BFD8A6-96B0-4EF8-BE6A-53B96771AA45}"
+      DTS:From="Package\Create Staging_DimCustomer"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Insert Changes into DimCustomer"
+      DTS:Value="2" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{F883FE49-401F-4946-AD93-9E7F552ACFC4}"
+      DTS:From="Package\Insert Changes into DimCustomer"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Insert Changes into FactInvoice"
+      DTS:Value="2" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="158.4,41.6"
+          Id="Package\Changes in OLTP"
+          TopLeft="257.142857690247,137.647058702876" />
+        <NodeLayout
+          Size="168.8,41.6"
+          Id="Package\Changes in Staging"
+          TopLeft="257.142857690247,214.117646871141" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="338.942857690247,179.247058702876">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.8705881682647"
+              Start="0,0"
+              End="0,27.3705881682647">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.3705881682647" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-25.304453125,7.88060658413234,50.60890625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="216.8,41.6"
+          Id="Package\Create Staging_DimCustomer"
+          TopLeft="275.714286301209,291.352940921088" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="341.542857690247,255.717646871141">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="42.5714286109621,35.6352940499473"
+              Start="0,0"
+              End="42.5714286109621,28.1352940499473">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.8176470249736" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.8176470249736"
+                    Point2="0,17.8176470249736"
+                    Point3="4,17.8176470249736" />
+                  <mssgle:LineSegment
+                    End="38.5714286109621,17.8176470249736" />
+                  <mssgle:CubicBezierSegment
+                    Point1="38.5714286109621,17.8176470249736"
+                    Point2="42.5714286109621,17.8176470249736"
+                    Point3="42.5714286109621,21.8176470249736" />
+                  <mssgle:LineSegment
+                    End="42.5714286109621,28.1352940499473" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-4.01873881951894,22.8176470249736,50.60890625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="237.6,41.6"
+          Id="Package\Insert Changes into DimCustomer"
+          TopLeft="305.714286365071,380.823529077958" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="384.114286301209,332.952940921088">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="40.4000000638623,47.8705881568698"
+              Start="0,0"
+              End="40.4000000638623,40.3705881568698">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.9352940784349" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.9352940784349"
+                    Point2="0,23.9352940784349"
+                    Point3="4,23.9352940784349" />
+                  <mssgle:LineSegment
+                    End="36.4000000638623,23.9352940784349" />
+                  <mssgle:CubicBezierSegment
+                    Point1="36.4000000638623,23.9352940784349"
+                    Point2="40.4000000638623,23.9352940784349"
+                    Point3="40.4000000638623,27.9352940784349" />
+                  <mssgle:LineSegment
+                    End="40.4000000638623,40.3705881568698" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-5.10445309306888,28.9352940784349,50.60890625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="228,41.6"
+          Id="Package\Insert Changes into FactInvoice"
+          TopLeft="317.857143533777,451.576470215552" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="428.185714949424,422.423529077958">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.1529411375934"
+              Start="0,0"
+              End="0,21.6529411375934">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.6529411375934" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-25.304453125,5.02178306879671,50.60890625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

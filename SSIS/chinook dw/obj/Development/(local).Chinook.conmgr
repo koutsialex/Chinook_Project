@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="(local).Chinook"
+  DTS:DTSID="{AE3ACB15-55FA-46DF-95D5-1F54CF93FDB6}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=(local);Initial Catalog=Chinook;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package-{AE3ACB15-55FA-46DF-95D5-1F54CF93FDB6}(local).Chinook;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

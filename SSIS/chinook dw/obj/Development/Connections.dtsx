@@ -1,0 +1,3170 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/15/2023 7:09:15 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-S4OLJQD0"
+  DTS:CreatorName="LAPTOP-S4OLJQD0\user"
+  DTS:DTSID="{04DDDECD-53A1-46FE-96C6-AA562FA0CB0B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5314.0"
+  DTS:LocaleID="1032"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{F36EBA11-2620-4C47-A272-624EE06FCF53}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(local).MelodicaDataWarehouse]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{69C66046-F9E0-4418-A377-F7A4683AEE94}"
+      DTS:ObjectName="(local).MelodicaDataWarehouse">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=MelodicaDataWarehouse;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{69C66046-F9E0-4418-A377-F7A4683AEE94}(local).MelodicaDataWarehouse;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\connect fact"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{4225DCA0-CF4B-45E8-A5B8-E7E2608021AE}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="connect fact"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\connect fact\Customers"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Customers"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimCustomer]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1253</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\connect fact\Customers.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(local).MelodicaDataWarehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local).MelodicaDataWarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\connect fact\Customers.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[CustomerKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[CustomerKey]"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[CustomerKey]"
+                      name="CustomerKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[CustomerId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[CustomerId]"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[CustomerId]"
+                      name="CustomerId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      length="40"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[LastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      length="20"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[Company]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[Company]"
+                      length="80"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[Company]"
+                      name="Company"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[Address]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                      length="70"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[Address]"
+                      name="Address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      length="40"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[State]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      length="40"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[State]"
+                      name="State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                      length="40"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[PostalCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[PostalCode]"
+                      length="10"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[PostalCode]"
+                      name="PostalCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[Phone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                      length="24"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[Phone]"
+                      name="Phone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[Fax]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[Fax]"
+                      length="24"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[Fax]"
+                      name="Fax"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[Email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      length="60"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[Email]"
+                      name="Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[SupportRepId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[SupportRepId]"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[SupportRepId]"
+                      name="SupportRepId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[RowIsCurrent]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[RowIsCurrent]"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[RowIsCurrent]"
+                      name="RowIsCurrent"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[RowStartDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[RowStartDate]"
+                      length="10"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[RowStartDate]"
+                      name="RowStartDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[RowEndDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[RowEndDate]"
+                      length="10"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[RowEndDate]"
+                      name="RowEndDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[RowChangeReason]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[RowChangeReason]"
+                      length="200"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Output].Columns[RowChangeReason]"
+                      name="RowChangeReason"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[CustomerKey]"
+                      dataType="i4"
+                      name="CustomerKey" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[CustomerId]"
+                      dataType="i4"
+                      name="CustomerId" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="40"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[Company]"
+                      dataType="wstr"
+                      length="80"
+                      name="Company" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="70"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="40"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      dataType="wstr"
+                      length="40"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="40"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                      dataType="wstr"
+                      length="24"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      name="Fax" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="60"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[SupportRepId]"
+                      dataType="i4"
+                      name="SupportRepId" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[RowIsCurrent]"
+                      dataType="i4"
+                      name="RowIsCurrent" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[RowStartDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="RowStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[RowEndDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="RowEndDate" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Output].ExternalColumns[RowChangeReason]"
+                      codePage="1253"
+                      dataType="str"
+                      length="200"
+                      name="RowChangeReason" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[CustomerKey]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[CustomerKey]"
+                      name="CustomerKey" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[CustomerId]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[CustomerId]"
+                      name="CustomerId" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[Company]"
+                      dataType="wstr"
+                      length="80"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[Company]"
+                      name="Company" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[Address]"
+                      dataType="wstr"
+                      length="70"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[Address]"
+                      name="Address" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[City]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[State]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[State]"
+                      name="State" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[Country]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[PostalCode]"
+                      name="PostalCode" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                      name="Phone" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[Fax]"
+                      name="Fax" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[SupportRepId]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[SupportRepId]"
+                      name="SupportRepId" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[RowIsCurrent]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[RowIsCurrent]"
+                      name="RowIsCurrent" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[RowStartDate]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[RowStartDate]"
+                      name="RowStartDate" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[RowEndDate]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[RowEndDate]"
+                      name="RowEndDate" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[RowChangeReason]"
+                      codePage="1253"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[RowChangeReason]"
+                      name="RowChangeReason" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Customers.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\connect fact\Date"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Date"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimDate]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1253</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\connect fact\Date.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(local).MelodicaDataWarehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local).MelodicaDataWarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\connect fact\Date.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      name="DateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[FullDateUK]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[FullDateUK]"
+                      length="10"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[FullDateUK]"
+                      name="FullDateUK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[FullDateUSA]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[FullDateUSA]"
+                      length="10"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[FullDateUSA]"
+                      name="FullDateUSA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[DayOfMonth]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[DayOfMonth]"
+                      length="2"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[DayOfMonth]"
+                      name="DayOfMonth"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[DaySuffix]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[DaySuffix]"
+                      length="4"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[DaySuffix]"
+                      name="DaySuffix"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[DayName]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[DayName]"
+                      length="9"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[DayName]"
+                      name="DayName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[DayOfWeekUSA]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[DayOfWeekUSA]"
+                      length="1"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[DayOfWeekUSA]"
+                      name="DayOfWeekUSA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[DayOfWeekUK]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[DayOfWeekUK]"
+                      length="1"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[DayOfWeekUK]"
+                      name="DayOfWeekUK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[DayOfWeekInMonth]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[DayOfWeekInMonth]"
+                      length="2"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[DayOfWeekInMonth]"
+                      name="DayOfWeekInMonth"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[DayOfWeekInYear]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[DayOfWeekInYear]"
+                      length="2"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[DayOfWeekInYear]"
+                      name="DayOfWeekInYear"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[DayOfQuarter]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[DayOfQuarter]"
+                      length="3"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[DayOfQuarter]"
+                      name="DayOfQuarter"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[DayOfYear]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[DayOfYear]"
+                      length="3"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[DayOfYear]"
+                      name="DayOfYear"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[WeekOfMonth]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[WeekOfMonth]"
+                      length="1"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[WeekOfMonth]"
+                      name="WeekOfMonth"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[WeekOfQuarter]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[WeekOfQuarter]"
+                      length="2"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[WeekOfQuarter]"
+                      name="WeekOfQuarter"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[WeekOfYear]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[WeekOfYear]"
+                      length="2"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[WeekOfYear]"
+                      name="WeekOfYear"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[Month]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                      length="2"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[Month]"
+                      name="Month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[MonthName]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[MonthName]"
+                      length="9"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[MonthName]"
+                      name="MonthName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[MonthOfQuarter]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[MonthOfQuarter]"
+                      length="2"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[MonthOfQuarter]"
+                      name="MonthOfQuarter"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[Quarter]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[Quarter]"
+                      length="1"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[Quarter]"
+                      name="Quarter"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[QuarterName]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[QuarterName]"
+                      length="9"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[QuarterName]"
+                      name="QuarterName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[Year]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      length="4"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[YearName]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[YearName]"
+                      length="7"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[YearName]"
+                      name="YearName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[MonthYear]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[MonthYear]"
+                      length="10"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[MonthYear]"
+                      name="MonthYear"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[MMYYYY]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[MMYYYY]"
+                      length="6"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[MMYYYY]"
+                      name="MMYYYY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[FirstDayOfMonth]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[FirstDayOfMonth]"
+                      length="10"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[FirstDayOfMonth]"
+                      name="FirstDayOfMonth"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[LastDayOfMonth]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[LastDayOfMonth]"
+                      length="10"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[LastDayOfMonth]"
+                      name="LastDayOfMonth"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[FirstDayOfQuarter]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[FirstDayOfQuarter]"
+                      length="10"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[FirstDayOfQuarter]"
+                      name="FirstDayOfQuarter"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[LastDayOfQuarter]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[LastDayOfQuarter]"
+                      length="10"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[LastDayOfQuarter]"
+                      name="LastDayOfQuarter"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[FirstDayOfYear]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[FirstDayOfYear]"
+                      length="10"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[FirstDayOfYear]"
+                      name="FirstDayOfYear"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[LastDayOfYear]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[LastDayOfYear]"
+                      length="10"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[LastDayOfYear]"
+                      name="LastDayOfYear"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[IsHolidayUSA]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[IsHolidayUSA]"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[IsHolidayUSA]"
+                      name="IsHolidayUSA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[IsWeekday]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[IsWeekday]"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[IsWeekday]"
+                      name="IsWeekday"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[HolidayUSA]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[HolidayUSA]"
+                      length="50"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[HolidayUSA]"
+                      name="HolidayUSA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[IsHolidayUK]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[IsHolidayUK]"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[IsHolidayUK]"
+                      name="IsHolidayUK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[HolidayUK]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[HolidayUK]"
+                      length="50"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Output].Columns[HolidayUK]"
+                      name="HolidayUK"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      dataType="dbTimeStamp"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[FullDateUK]"
+                      codePage="1253"
+                      dataType="str"
+                      length="10"
+                      name="FullDateUK" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[FullDateUSA]"
+                      codePage="1253"
+                      dataType="str"
+                      length="10"
+                      name="FullDateUSA" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[DayOfMonth]"
+                      codePage="1253"
+                      dataType="str"
+                      length="2"
+                      name="DayOfMonth" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[DaySuffix]"
+                      codePage="1253"
+                      dataType="str"
+                      length="4"
+                      name="DaySuffix" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[DayName]"
+                      codePage="1253"
+                      dataType="str"
+                      length="9"
+                      name="DayName" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[DayOfWeekUSA]"
+                      codePage="1253"
+                      dataType="str"
+                      length="1"
+                      name="DayOfWeekUSA" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[DayOfWeekUK]"
+                      codePage="1253"
+                      dataType="str"
+                      length="1"
+                      name="DayOfWeekUK" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[DayOfWeekInMonth]"
+                      codePage="1253"
+                      dataType="str"
+                      length="2"
+                      name="DayOfWeekInMonth" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[DayOfWeekInYear]"
+                      codePage="1253"
+                      dataType="str"
+                      length="2"
+                      name="DayOfWeekInYear" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[DayOfQuarter]"
+                      codePage="1253"
+                      dataType="str"
+                      length="3"
+                      name="DayOfQuarter" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[DayOfYear]"
+                      codePage="1253"
+                      dataType="str"
+                      length="3"
+                      name="DayOfYear" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[WeekOfMonth]"
+                      codePage="1253"
+                      dataType="str"
+                      length="1"
+                      name="WeekOfMonth" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[WeekOfQuarter]"
+                      codePage="1253"
+                      dataType="str"
+                      length="2"
+                      name="WeekOfQuarter" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[WeekOfYear]"
+                      codePage="1253"
+                      dataType="str"
+                      length="2"
+                      name="WeekOfYear" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                      codePage="1253"
+                      dataType="str"
+                      length="2"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[MonthName]"
+                      codePage="1253"
+                      dataType="str"
+                      length="9"
+                      name="MonthName" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[MonthOfQuarter]"
+                      codePage="1253"
+                      dataType="str"
+                      length="2"
+                      name="MonthOfQuarter" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[Quarter]"
+                      codePage="1253"
+                      dataType="str"
+                      length="1"
+                      name="Quarter" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[QuarterName]"
+                      codePage="1253"
+                      dataType="str"
+                      length="9"
+                      name="QuarterName" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      codePage="1253"
+                      dataType="str"
+                      length="4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[YearName]"
+                      codePage="1253"
+                      dataType="str"
+                      length="7"
+                      name="YearName" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[MonthYear]"
+                      codePage="1253"
+                      dataType="str"
+                      length="10"
+                      name="MonthYear" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[MMYYYY]"
+                      codePage="1253"
+                      dataType="str"
+                      length="6"
+                      name="MMYYYY" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[FirstDayOfMonth]"
+                      dataType="wstr"
+                      length="10"
+                      name="FirstDayOfMonth" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[LastDayOfMonth]"
+                      dataType="wstr"
+                      length="10"
+                      name="LastDayOfMonth" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[FirstDayOfQuarter]"
+                      dataType="wstr"
+                      length="10"
+                      name="FirstDayOfQuarter" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[LastDayOfQuarter]"
+                      dataType="wstr"
+                      length="10"
+                      name="LastDayOfQuarter" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[FirstDayOfYear]"
+                      dataType="wstr"
+                      length="10"
+                      name="FirstDayOfYear" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[LastDayOfYear]"
+                      dataType="wstr"
+                      length="10"
+                      name="LastDayOfYear" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[IsHolidayUSA]"
+                      dataType="bool"
+                      name="IsHolidayUSA" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[IsWeekday]"
+                      dataType="bool"
+                      name="IsWeekday" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[HolidayUSA]"
+                      codePage="1253"
+                      dataType="str"
+                      length="50"
+                      name="HolidayUSA" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[IsHolidayUK]"
+                      dataType="bool"
+                      name="IsHolidayUK" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Output].ExternalColumns[HolidayUK]"
+                      codePage="1253"
+                      dataType="str"
+                      length="50"
+                      name="HolidayUK" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      name="DateKey" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      name="Date" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[FullDateUK]"
+                      codePage="1253"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[FullDateUK]"
+                      name="FullDateUK" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[FullDateUSA]"
+                      codePage="1253"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[FullDateUSA]"
+                      name="FullDateUSA" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[DayOfMonth]"
+                      codePage="1253"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[DayOfMonth]"
+                      name="DayOfMonth" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[DaySuffix]"
+                      codePage="1253"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[DaySuffix]"
+                      name="DaySuffix" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[DayName]"
+                      codePage="1253"
+                      dataType="str"
+                      length="9"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[DayName]"
+                      name="DayName" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[DayOfWeekUSA]"
+                      codePage="1253"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[DayOfWeekUSA]"
+                      name="DayOfWeekUSA" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[DayOfWeekUK]"
+                      codePage="1253"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[DayOfWeekUK]"
+                      name="DayOfWeekUK" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[DayOfWeekInMonth]"
+                      codePage="1253"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[DayOfWeekInMonth]"
+                      name="DayOfWeekInMonth" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[DayOfWeekInYear]"
+                      codePage="1253"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[DayOfWeekInYear]"
+                      name="DayOfWeekInYear" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[DayOfQuarter]"
+                      codePage="1253"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[DayOfQuarter]"
+                      name="DayOfQuarter" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[DayOfYear]"
+                      codePage="1253"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[DayOfYear]"
+                      name="DayOfYear" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[WeekOfMonth]"
+                      codePage="1253"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[WeekOfMonth]"
+                      name="WeekOfMonth" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[WeekOfQuarter]"
+                      codePage="1253"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[WeekOfQuarter]"
+                      name="WeekOfQuarter" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[WeekOfYear]"
+                      codePage="1253"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[WeekOfYear]"
+                      name="WeekOfYear" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[Month]"
+                      codePage="1253"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[Month]"
+                      name="Month" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[MonthName]"
+                      codePage="1253"
+                      dataType="str"
+                      length="9"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[MonthName]"
+                      name="MonthName" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[MonthOfQuarter]"
+                      codePage="1253"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[MonthOfQuarter]"
+                      name="MonthOfQuarter" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[Quarter]"
+                      codePage="1253"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[Quarter]"
+                      name="Quarter" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[QuarterName]"
+                      codePage="1253"
+                      dataType="str"
+                      length="9"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[QuarterName]"
+                      name="QuarterName" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      codePage="1253"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      name="Year" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[YearName]"
+                      codePage="1253"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[YearName]"
+                      name="YearName" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[MonthYear]"
+                      codePage="1253"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[MonthYear]"
+                      name="MonthYear" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[MMYYYY]"
+                      codePage="1253"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[MMYYYY]"
+                      name="MMYYYY" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[FirstDayOfMonth]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[FirstDayOfMonth]"
+                      name="FirstDayOfMonth" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[LastDayOfMonth]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[LastDayOfMonth]"
+                      name="LastDayOfMonth" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[FirstDayOfQuarter]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[FirstDayOfQuarter]"
+                      name="FirstDayOfQuarter" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[LastDayOfQuarter]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[LastDayOfQuarter]"
+                      name="LastDayOfQuarter" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[FirstDayOfYear]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[FirstDayOfYear]"
+                      name="FirstDayOfYear" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[LastDayOfYear]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[LastDayOfYear]"
+                      name="LastDayOfYear" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[IsHolidayUSA]"
+                      dataType="bool"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[IsHolidayUSA]"
+                      name="IsHolidayUSA" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[IsWeekday]"
+                      dataType="bool"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[IsWeekday]"
+                      name="IsWeekday" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[HolidayUSA]"
+                      codePage="1253"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[HolidayUSA]"
+                      name="HolidayUSA" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[IsHolidayUK]"
+                      dataType="bool"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[IsHolidayUK]"
+                      name="IsHolidayUK" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[HolidayUK]"
+                      codePage="1253"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[HolidayUK]"
+                      name="HolidayUK" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Date.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\connect fact\Employee"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Employee"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimEmployee]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1253</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\connect fact\Employee.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(local).MelodicaDataWarehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local).MelodicaDataWarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\connect fact\Employee.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[EmployeeKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[EmployeeKey]"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[EmployeeKey]"
+                      name="EmployeeKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[EmployeeId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[EmployeeId]"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[EmployeeId]"
+                      name="EmployeeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[LastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      length="20"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      length="20"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[Title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[Title]"
+                      length="30"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[Title]"
+                      name="Title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[ReportsTo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[ReportsTo]"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[ReportsTo]"
+                      name="ReportsTo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[BirthDate]"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[BirthDate]"
+                      name="BirthDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[HireDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[HireDate]"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[HireDate]"
+                      name="HireDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[Address]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                      length="70"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[Address]"
+                      name="Address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      length="40"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[State]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      length="40"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[State]"
+                      name="State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                      length="40"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[PostalCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[PostalCode]"
+                      length="10"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[PostalCode]"
+                      name="PostalCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[Phone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                      length="24"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[Phone]"
+                      name="Phone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[Fax]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[Fax]"
+                      length="24"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[Fax]"
+                      name="Fax"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[Email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      length="60"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[Email]"
+                      name="Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[RowIsCurrent]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[RowIsCurrent]"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[RowIsCurrent]"
+                      name="RowIsCurrent"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[RowStartDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[RowStartDate]"
+                      length="10"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[RowStartDate]"
+                      name="RowStartDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[RowEndDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[RowEndDate]"
+                      length="10"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[RowEndDate]"
+                      name="RowEndDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[RowChangeReason]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[RowChangeReason]"
+                      length="200"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Output].Columns[RowChangeReason]"
+                      name="RowChangeReason"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[EmployeeKey]"
+                      dataType="i4"
+                      name="EmployeeKey" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[EmployeeId]"
+                      dataType="i4"
+                      name="EmployeeId" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="20"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="30"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[ReportsTo]"
+                      dataType="i4"
+                      name="ReportsTo" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[HireDate]"
+                      dataType="dbTimeStamp"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="70"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="40"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      dataType="wstr"
+                      length="40"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="40"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                      dataType="wstr"
+                      length="24"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      name="Fax" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="60"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[RowIsCurrent]"
+                      dataType="i4"
+                      name="RowIsCurrent" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[RowStartDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="RowStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[RowEndDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="RowEndDate" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Output].ExternalColumns[RowChangeReason]"
+                      codePage="1253"
+                      dataType="str"
+                      length="200"
+                      name="RowChangeReason" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[EmployeeKey]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[EmployeeKey]"
+                      name="EmployeeKey" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[EmployeeId]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[EmployeeId]"
+                      name="EmployeeId" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[Title]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[Title]"
+                      name="Title" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[ReportsTo]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[ReportsTo]"
+                      name="ReportsTo" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[BirthDate]"
+                      name="BirthDate" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[HireDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[HireDate]"
+                      name="HireDate" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[Address]"
+                      dataType="wstr"
+                      length="70"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[Address]"
+                      name="Address" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[City]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[State]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[State]"
+                      name="State" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[Country]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[PostalCode]"
+                      name="PostalCode" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                      name="Phone" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[Fax]"
+                      name="Fax" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[RowIsCurrent]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[RowIsCurrent]"
+                      name="RowIsCurrent" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[RowStartDate]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[RowStartDate]"
+                      name="RowStartDate" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[RowEndDate]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[RowEndDate]"
+                      name="RowEndDate" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[RowChangeReason]"
+                      codePage="1253"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[RowChangeReason]"
+                      name="RowChangeReason" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Employee.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\connect fact\Playlist"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Playlist"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimPlaylist]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1253</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\connect fact\Playlist.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(local).MelodicaDataWarehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local).MelodicaDataWarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\connect fact\Playlist.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].Columns[PlaylistKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].ExternalColumns[PlaylistKey]"
+                      lineageId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].Columns[PlaylistKey]"
+                      name="PlaylistKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].Columns[PlaylistId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].ExternalColumns[PlaylistId]"
+                      lineageId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].Columns[PlaylistId]"
+                      name="PlaylistId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      length="120"
+                      lineageId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].Columns[TrackId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].ExternalColumns[TrackId]"
+                      lineageId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].Columns[TrackId]"
+                      name="TrackId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].Columns[RowIsCurrent]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].ExternalColumns[RowIsCurrent]"
+                      lineageId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].Columns[RowIsCurrent]"
+                      name="RowIsCurrent"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].Columns[RowStartDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].ExternalColumns[RowStartDate]"
+                      length="10"
+                      lineageId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].Columns[RowStartDate]"
+                      name="RowStartDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].Columns[RowEndDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].ExternalColumns[RowEndDate]"
+                      length="10"
+                      lineageId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].Columns[RowEndDate]"
+                      name="RowEndDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].Columns[RowChangeReason]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].ExternalColumns[RowChangeReason]"
+                      length="200"
+                      lineageId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].Columns[RowChangeReason]"
+                      name="RowChangeReason"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].ExternalColumns[PlaylistKey]"
+                      dataType="i4"
+                      name="PlaylistKey" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].ExternalColumns[PlaylistId]"
+                      dataType="i4"
+                      name="PlaylistId" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="120"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].ExternalColumns[TrackId]"
+                      dataType="i4"
+                      name="TrackId" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].ExternalColumns[RowIsCurrent]"
+                      dataType="i4"
+                      name="RowIsCurrent" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].ExternalColumns[RowStartDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="RowStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].ExternalColumns[RowEndDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="RowEndDate" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Output].ExternalColumns[RowChangeReason]"
+                      codePage="1253"
+                      dataType="str"
+                      length="200"
+                      name="RowChangeReason" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\connect fact\Playlist.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Error Output].Columns[PlaylistKey]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Playlist.Outputs[OLE DB Source Error Output].Columns[PlaylistKey]"
+                      name="PlaylistKey" />
+                    <outputColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Error Output].Columns[PlaylistId]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Playlist.Outputs[OLE DB Source Error Output].Columns[PlaylistId]"
+                      name="PlaylistId" />
+                    <outputColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="120"
+                      lineageId="Package\connect fact\Playlist.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Error Output].Columns[TrackId]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Playlist.Outputs[OLE DB Source Error Output].Columns[TrackId]"
+                      name="TrackId" />
+                    <outputColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Error Output].Columns[RowIsCurrent]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Playlist.Outputs[OLE DB Source Error Output].Columns[RowIsCurrent]"
+                      name="RowIsCurrent" />
+                    <outputColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Error Output].Columns[RowStartDate]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\connect fact\Playlist.Outputs[OLE DB Source Error Output].Columns[RowStartDate]"
+                      name="RowStartDate" />
+                    <outputColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Error Output].Columns[RowEndDate]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\connect fact\Playlist.Outputs[OLE DB Source Error Output].Columns[RowEndDate]"
+                      name="RowEndDate" />
+                    <outputColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Error Output].Columns[RowChangeReason]"
+                      codePage="1253"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\connect fact\Playlist.Outputs[OLE DB Source Error Output].Columns[RowChangeReason]"
+                      name="RowChangeReason" />
+                    <outputColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Playlist.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\connect fact\Playlist.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Playlist.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\connect fact\Sales"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Sales"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FactSales]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1253</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\connect fact\Sales.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(local).MelodicaDataWarehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local).MelodicaDataWarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\connect fact\Sales.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[TrackKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[TrackKey]"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[TrackKey]"
+                      name="TrackKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[CustomerKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[CustomerKey]"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[CustomerKey]"
+                      name="CustomerKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      name="DateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[InvoiceId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[InvoiceId]"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[InvoiceId]"
+                      name="InvoiceId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                      name="InvoiceDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[BillingAddress]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[BillingAddress]"
+                      length="70"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[BillingAddress]"
+                      name="BillingAddress"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[BillingCity]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[BillingCity]"
+                      length="40"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[BillingCity]"
+                      name="BillingCity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[BillingState]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[BillingState]"
+                      length="40"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[BillingState]"
+                      name="BillingState"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[BillingCountry]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[BillingCountry]"
+                      length="40"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[BillingCountry]"
+                      name="BillingCountry"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[BillingPostalCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[BillingPostalCode]"
+                      length="10"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[BillingPostalCode]"
+                      name="BillingPostalCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      name="UnitPrice"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[Quantity]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[Quantity]"
+                      name="Quantity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[Total]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[Total]"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Output].Columns[Total]"
+                      name="Total"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[TrackKey]"
+                      dataType="i4"
+                      name="TrackKey" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[CustomerKey]"
+                      dataType="i4"
+                      name="CustomerKey" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[InvoiceId]"
+                      dataType="i4"
+                      name="InvoiceId" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                      dataType="dbTimeStamp"
+                      name="InvoiceDate" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[BillingAddress]"
+                      dataType="wstr"
+                      length="70"
+                      name="BillingAddress" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[BillingCity]"
+                      dataType="wstr"
+                      length="40"
+                      name="BillingCity" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[BillingState]"
+                      dataType="wstr"
+                      length="40"
+                      name="BillingState" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[BillingCountry]"
+                      dataType="wstr"
+                      length="40"
+                      name="BillingCountry" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[BillingPostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="BillingPostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      dataType="numeric"
+                      name="UnitPrice"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      dataType="i4"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Output].ExternalColumns[Total]"
+                      dataType="numeric"
+                      name="Total"
+                      precision="10"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[TrackKey]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[TrackKey]"
+                      name="TrackKey" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[CustomerKey]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[CustomerKey]"
+                      name="CustomerKey" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      name="DateKey" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[InvoiceId]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[InvoiceId]"
+                      name="InvoiceId" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                      name="InvoiceDate" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[BillingAddress]"
+                      dataType="wstr"
+                      length="70"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[BillingAddress]"
+                      name="BillingAddress" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[BillingCity]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[BillingCity]"
+                      name="BillingCity" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[BillingState]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[BillingState]"
+                      name="BillingState" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[BillingCountry]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[BillingCountry]"
+                      name="BillingCountry" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[BillingPostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[BillingPostalCode]"
+                      name="BillingPostalCode" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      dataType="numeric"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      name="UnitPrice"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      name="Quantity" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[Total]"
+                      dataType="numeric"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[Total]"
+                      name="Total"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Sales.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\connect fact\Tracks"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Tracks"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimTrack]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1253</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\connect fact\Tracks.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(local).MelodicaDataWarehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local).MelodicaDataWarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[TrackKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[TrackKey]"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[TrackKey]"
+                      name="TrackKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[PlaylistKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[PlaylistKey]"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[PlaylistKey]"
+                      name="PlaylistKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[TrackId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[TrackId]"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[TrackId]"
+                      name="TrackId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      length="200"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[AlbumId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[AlbumId]"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[AlbumId]"
+                      name="AlbumId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[MediaTypeId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[MediaTypeId]"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[MediaTypeId]"
+                      name="MediaTypeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[GenreId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[GenreId]"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[GenreId]"
+                      name="GenreId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[Composer]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[Composer]"
+                      length="220"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[Composer]"
+                      name="Composer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[Milliseconds]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[Milliseconds]"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[Milliseconds]"
+                      name="Milliseconds"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[Bytes]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[Bytes]"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[Bytes]"
+                      name="Bytes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      name="UnitPrice"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[MediaTypeName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[MediaTypeName]"
+                      length="120"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[MediaTypeName]"
+                      name="MediaTypeName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[GenreName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[GenreName]"
+                      length="120"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[GenreName]"
+                      name="GenreName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[Title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[Title]"
+                      length="160"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[Title]"
+                      name="Title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[ArtistId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[ArtistId]"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[ArtistId]"
+                      name="ArtistId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[ArtistName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[ArtistName]"
+                      length="120"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[ArtistName]"
+                      name="ArtistName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[RowIsCurrent]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[RowIsCurrent]"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[RowIsCurrent]"
+                      name="RowIsCurrent"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[RowStartDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[RowStartDate]"
+                      length="10"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[RowStartDate]"
+                      name="RowStartDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[RowEndDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[RowEndDate]"
+                      length="10"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[RowEndDate]"
+                      name="RowEndDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[RowChangeReason]"
+                      codePage="1253"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[RowChangeReason]"
+                      length="200"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].Columns[RowChangeReason]"
+                      name="RowChangeReason"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[TrackKey]"
+                      dataType="i4"
+                      name="TrackKey" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[PlaylistKey]"
+                      dataType="i4"
+                      name="PlaylistKey" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[TrackId]"
+                      dataType="i4"
+                      name="TrackId" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="200"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[AlbumId]"
+                      dataType="i4"
+                      name="AlbumId" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[MediaTypeId]"
+                      dataType="i4"
+                      name="MediaTypeId" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[GenreId]"
+                      dataType="i4"
+                      name="GenreId" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[Composer]"
+                      dataType="wstr"
+                      length="220"
+                      name="Composer" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[Milliseconds]"
+                      dataType="i4"
+                      name="Milliseconds" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[Bytes]"
+                      dataType="i4"
+                      name="Bytes" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      dataType="numeric"
+                      name="UnitPrice"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[MediaTypeName]"
+                      dataType="wstr"
+                      length="120"
+                      name="MediaTypeName" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[GenreName]"
+                      dataType="wstr"
+                      length="120"
+                      name="GenreName" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="160"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[ArtistId]"
+                      dataType="i4"
+                      name="ArtistId" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[ArtistName]"
+                      dataType="wstr"
+                      length="120"
+                      name="ArtistName" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[RowIsCurrent]"
+                      dataType="i4"
+                      name="RowIsCurrent" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[RowStartDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="RowStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[RowEndDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="RowEndDate" />
+                    <externalMetadataColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Output].ExternalColumns[RowChangeReason]"
+                      codePage="1253"
+                      dataType="str"
+                      length="200"
+                      name="RowChangeReason" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[TrackKey]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[TrackKey]"
+                      name="TrackKey" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[PlaylistKey]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[PlaylistKey]"
+                      name="PlaylistKey" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[TrackId]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[TrackId]"
+                      name="TrackId" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[AlbumId]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[AlbumId]"
+                      name="AlbumId" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[MediaTypeId]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[MediaTypeId]"
+                      name="MediaTypeId" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[GenreId]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[GenreId]"
+                      name="GenreId" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[Composer]"
+                      dataType="wstr"
+                      length="220"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[Composer]"
+                      name="Composer" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[Milliseconds]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[Milliseconds]"
+                      name="Milliseconds" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[Bytes]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[Bytes]"
+                      name="Bytes" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      dataType="numeric"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      name="UnitPrice"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[MediaTypeName]"
+                      dataType="wstr"
+                      length="120"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[MediaTypeName]"
+                      name="MediaTypeName" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[GenreName]"
+                      dataType="wstr"
+                      length="120"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[GenreName]"
+                      name="GenreName" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[Title]"
+                      dataType="wstr"
+                      length="160"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[Title]"
+                      name="Title" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[ArtistId]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[ArtistId]"
+                      name="ArtistId" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[ArtistName]"
+                      dataType="wstr"
+                      length="120"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[ArtistName]"
+                      name="ArtistName" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[RowIsCurrent]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[RowIsCurrent]"
+                      name="RowIsCurrent" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[RowStartDate]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[RowStartDate]"
+                      name="RowStartDate" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[RowEndDate]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[RowEndDate]"
+                      name="RowEndDate" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[RowChangeReason]"
+                      codePage="1253"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[RowChangeReason]"
+                      name="RowChangeReason" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\connect fact\Tracks.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{0918E4B9-1149-4288-807A-654554A16D31}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{69C66046-F9E0-4418-A377-F7A4683AEE94}"
+          SQLTask:SqlStatementSource="ALTER TABLE FactSales ADD CONSTRAINT FK_FactTrack FOREIGN KEY (TrackKey)&#xA;    REFERENCES DimTrack(TrackKey);&#xA;&#xA;ALTER TABLE FactSales ADD CONSTRAINT FK_FactCustomer FOREIGN KEY (CustomerKey)&#xA;    REFERENCES DimCustomer(CustomerKey);&#xA;&#xA;ALTER TABLE FactSales ADD CONSTRAINT FK_FactDate FOREIGN KEY (DateKey)&#xA;    REFERENCES DimDate(DateKey);&#xA;&#xA;ALTER TABLE DimTrack ADD CONSTRAINT FK_TrackPlaylist FOREIGN KEY (PlaylistKey)&#xA;    REFERENCES DimPlaylist(PlaylistKey);&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{0F1766BB-89D1-4370-B245-73940D984484}"
+      DTS:From="Package\connect fact"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Execute SQL Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="136,41.6"
+          Id="Package\connect fact"
+          TopLeft="140.000000298023,23.705882332162" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Execute SQL Task"
+          TopLeft="124.285714550286,100.941176382109" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="206.742857424154,65.305882332162">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.635294049947"
+              Start="0,0"
+              End="0,28.135294049947">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.135294049947" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\connect fact">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="111.2,41.6"
+          Id="Package\connect fact\Playlist"
+          TopLeft="180.714286098979,174.352941023643" />
+        <NodeLayout
+          Size="128,41.6"
+          Id="Package\connect fact\Customers"
+          TopLeft="145.714286024473,30.5882352673059" />
+        <NodeLayout
+          Size="124,41.6"
+          Id="Package\connect fact\Employee"
+          TopLeft="317.142857817971,45.8823529009588" />
+        <NodeLayout
+          Size="100.8,41.6"
+          Id="Package\connect fact\Date"
+          TopLeft="522.857143970169,51.99999995442" />
+        <NodeLayout
+          Size="102.4,41.6"
+          Id="Package\connect fact\Sales"
+          TopLeft="573.571429792412,193.47058806571" />
+        <NodeLayout
+          Size="108.8,41.6"
+          Id="Package\connect fact\Tracks"
+          TopLeft="362.999994590879,182.999997273087" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\connect fact\Playlist">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\connect fact\Customers">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\connect fact\Employee">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\connect fact\Date">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\connect fact\Sales">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\connect fact\Tracks">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

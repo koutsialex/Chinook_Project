@@ -1,0 +1,1882 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/9/2023 11:11:42 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-S4OLJQD0"
+  DTS:CreatorName="LAPTOP-S4OLJQD0\user"
+  DTS:DTSID="{8A0B95DA-7DC9-431C-B03E-A2235788BF3A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5314.0"
+  DTS:LocaleID="1032"
+  DTS:ObjectName="Sales"
+  DTS:PackageType="5"
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{F6FB9D49-52F4-44F0-B314-5701660549E4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Create Sales"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{FF87DBA2-1BAD-4A0E-B84D-D03FDD19D7ED}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create Sales"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D21744DC-0689-42D1-A1B3-F8EEC719D864}"
+          SQLTask:SqlStatementSource="DROP TABLE IF EXISTS Sales&#xA;CREATE TABLE [Sales] (&#xA;    [InvoiceId] int,&#xA;    [CustomerId] int,&#xA;    [InvoiceDate] datetime,&#xA;    [BillingAddress] nvarchar(70),&#xA;    [BillingCity] nvarchar(40),&#xA;    [BillingState] nvarchar(40),&#xA;    [BillingCountry] nvarchar(40),&#xA;    [BillingPostalCode] nvarchar(10),&#xA;    [TrackId] int,&#xA;    [UnitPrice] numeric(10,2),&#xA;    [Quantity] int,&#xA;    [Total] numeric(10,2)&#xA;)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Sales"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{817B77A2-DDCE-4733-B78A-FC5BDD81D079}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Sales"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Sales\Invoice Table"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Invoice Table"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Invoice]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1253</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Sales\Invoice Table.Connections[OleDbConnection]"
+                  connectionManagerID="{D412E376-F508-4E57-9D3D-A76B62F52C47}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[(local).Chinook 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[InvoiceId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].ExternalColumns[InvoiceId]"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[InvoiceId]"
+                      name="InvoiceId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[CustomerId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].ExternalColumns[CustomerId]"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[CustomerId]"
+                      name="CustomerId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
+                      name="InvoiceDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[BillingAddress]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].ExternalColumns[BillingAddress]"
+                      length="70"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[BillingAddress]"
+                      name="BillingAddress"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[BillingCity]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].ExternalColumns[BillingCity]"
+                      length="40"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[BillingCity]"
+                      name="BillingCity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[BillingState]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].ExternalColumns[BillingState]"
+                      length="40"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[BillingState]"
+                      name="BillingState"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[BillingCountry]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].ExternalColumns[BillingCountry]"
+                      length="40"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[BillingCountry]"
+                      name="BillingCountry"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[BillingPostalCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].ExternalColumns[BillingPostalCode]"
+                      length="10"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[BillingPostalCode]"
+                      name="BillingPostalCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[Total]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].ExternalColumns[Total]"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[Total]"
+                      name="Total"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].ExternalColumns[InvoiceId]"
+                      dataType="i4"
+                      name="InvoiceId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].ExternalColumns[CustomerId]"
+                      dataType="i4"
+                      name="CustomerId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
+                      dataType="dbTimeStamp"
+                      name="InvoiceDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].ExternalColumns[BillingAddress]"
+                      dataType="wstr"
+                      length="70"
+                      name="BillingAddress" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].ExternalColumns[BillingCity]"
+                      dataType="wstr"
+                      length="40"
+                      name="BillingCity" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].ExternalColumns[BillingState]"
+                      dataType="wstr"
+                      length="40"
+                      name="BillingState" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].ExternalColumns[BillingCountry]"
+                      dataType="wstr"
+                      length="40"
+                      name="BillingCountry" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].ExternalColumns[BillingPostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="BillingPostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].ExternalColumns[Total]"
+                      dataType="numeric"
+                      name="Total"
+                      precision="10"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output].Columns[InvoiceId]"
+                      dataType="i4"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output].Columns[InvoiceId]"
+                      name="InvoiceId" />
+                    <outputColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output].Columns[CustomerId]"
+                      dataType="i4"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output].Columns[CustomerId]"
+                      name="CustomerId" />
+                    <outputColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
+                      name="InvoiceDate" />
+                    <outputColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output].Columns[BillingAddress]"
+                      dataType="wstr"
+                      length="70"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output].Columns[BillingAddress]"
+                      name="BillingAddress" />
+                    <outputColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output].Columns[BillingCity]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output].Columns[BillingCity]"
+                      name="BillingCity" />
+                    <outputColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output].Columns[BillingState]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output].Columns[BillingState]"
+                      name="BillingState" />
+                    <outputColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output].Columns[BillingCountry]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output].Columns[BillingCountry]"
+                      name="BillingCountry" />
+                    <outputColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output].Columns[BillingPostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output].Columns[BillingPostalCode]"
+                      name="BillingPostalCode" />
+                    <outputColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output].Columns[Total]"
+                      dataType="numeric"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output].Columns[Total]"
+                      name="Total"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Sales\InvoiceLine Table"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="InvoiceLine Table"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[InvoiceLine]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1253</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Sales\InvoiceLine Table.Connections[OleDbConnection]"
+                  connectionManagerID="{D412E376-F508-4E57-9D3D-A76B62F52C47}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[(local).Chinook 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].Columns[InvoiceLineId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].ExternalColumns[InvoiceLineId]"
+                      lineageId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].Columns[InvoiceLineId]"
+                      name="InvoiceLineId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].Columns[InvoiceId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].ExternalColumns[InvoiceId]"
+                      lineageId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].Columns[InvoiceId]"
+                      name="InvoiceId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].Columns[TrackId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].ExternalColumns[TrackId]"
+                      lineageId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].Columns[TrackId]"
+                      name="TrackId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      lineageId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      name="UnitPrice"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].Columns[Quantity]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      lineageId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].Columns[Quantity]"
+                      name="Quantity"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].ExternalColumns[InvoiceLineId]"
+                      dataType="i4"
+                      name="InvoiceLineId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].ExternalColumns[InvoiceId]"
+                      dataType="i4"
+                      name="InvoiceId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].ExternalColumns[TrackId]"
+                      dataType="i4"
+                      name="TrackId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      dataType="numeric"
+                      name="UnitPrice"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      dataType="i4"
+                      name="Quantity" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Error Output].Columns[InvoiceLineId]"
+                      dataType="i4"
+                      lineageId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Error Output].Columns[InvoiceLineId]"
+                      name="InvoiceLineId" />
+                    <outputColumn
+                      refId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Error Output].Columns[InvoiceId]"
+                      dataType="i4"
+                      lineageId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Error Output].Columns[InvoiceId]"
+                      name="InvoiceId" />
+                    <outputColumn
+                      refId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Error Output].Columns[TrackId]"
+                      dataType="i4"
+                      lineageId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Error Output].Columns[TrackId]"
+                      name="TrackId" />
+                    <outputColumn
+                      refId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      dataType="numeric"
+                      lineageId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      name="UnitPrice"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      dataType="i4"
+                      lineageId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      name="Quantity" />
+                    <outputColumn
+                      refId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Sales\Merge Join 1"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load Sales\Merge Join 1.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Sales\Merge Join 1.Inputs[Merge Join Left Input].Columns[InvoiceLineId]"
+                      cachedDataType="i4"
+                      cachedName="InvoiceLineId"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Load Sales\Sort 2.Outputs[Sort Output].Columns[InvoiceLineId]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Merge Join 1.Inputs[Merge Join Left Input].Columns[InvoiceId]"
+                      cachedDataType="i4"
+                      cachedName="InvoiceId"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Load Sales\Sort 2.Outputs[Sort Output].Columns[InvoiceId]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Merge Join 1.Inputs[Merge Join Left Input].Columns[TrackId]"
+                      cachedDataType="i4"
+                      cachedName="TrackId"
+                      cachedSortKeyPosition="3"
+                      lineageId="Package\Load Sales\Sort 2.Outputs[Sort Output].Columns[TrackId]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Merge Join 1.Inputs[Merge Join Left Input].Columns[UnitPrice]"
+                      cachedDataType="numeric"
+                      cachedName="UnitPrice"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      cachedSortKeyPosition="4"
+                      lineageId="Package\Load Sales\Sort 2.Outputs[Sort Output].Columns[UnitPrice]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Merge Join 1.Inputs[Merge Join Left Input].Columns[Quantity]"
+                      cachedDataType="i4"
+                      cachedName="Quantity"
+                      cachedSortKeyPosition="5"
+                      lineageId="Package\Load Sales\Sort 2.Outputs[Sort Output].Columns[Quantity]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Load Sales\Merge Join 1.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Sales\Merge Join 1.Inputs[Merge Join Right Input].Columns[InvoiceId]"
+                      cachedDataType="i4"
+                      cachedName="InvoiceId"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[InvoiceId]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Merge Join 1.Inputs[Merge Join Right Input].Columns[CustomerId]"
+                      cachedDataType="i4"
+                      cachedName="CustomerId"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[CustomerId]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Merge Join 1.Inputs[Merge Join Right Input].Columns[InvoiceDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="InvoiceDate"
+                      cachedSortKeyPosition="3"
+                      lineageId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[InvoiceDate]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Merge Join 1.Inputs[Merge Join Right Input].Columns[BillingAddress]"
+                      cachedDataType="wstr"
+                      cachedLength="70"
+                      cachedName="BillingAddress"
+                      cachedSortKeyPosition="4"
+                      lineageId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[BillingAddress]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Merge Join 1.Inputs[Merge Join Right Input].Columns[BillingCity]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="BillingCity"
+                      cachedSortKeyPosition="5"
+                      lineageId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[BillingCity]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Merge Join 1.Inputs[Merge Join Right Input].Columns[BillingState]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="BillingState"
+                      cachedSortKeyPosition="6"
+                      lineageId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[BillingState]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Merge Join 1.Inputs[Merge Join Right Input].Columns[BillingCountry]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="BillingCountry"
+                      cachedSortKeyPosition="7"
+                      lineageId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[BillingCountry]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Merge Join 1.Inputs[Merge Join Right Input].Columns[BillingPostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="BillingPostalCode"
+                      cachedSortKeyPosition="8"
+                      lineageId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[BillingPostalCode]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Merge Join 1.Inputs[Merge Join Right Input].Columns[Total]"
+                      cachedDataType="numeric"
+                      cachedName="Total"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      cachedSortKeyPosition="9"
+                      lineageId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[Total]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[InvoiceId]"
+                      dataType="i4"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[InvoiceId]"
+                      name="InvoiceId"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Load Sales\Merge Join 1.Inputs[Merge Join Right Input].Columns[InvoiceId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[CustomerId]"
+                      dataType="i4"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[CustomerId]"
+                      name="CustomerId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Load Sales\Merge Join 1.Inputs[Merge Join Right Input].Columns[CustomerId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[InvoiceDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[InvoiceDate]"
+                      name="InvoiceDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Load Sales\Merge Join 1.Inputs[Merge Join Right Input].Columns[InvoiceDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[BillingAddress]"
+                      dataType="wstr"
+                      length="70"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[BillingAddress]"
+                      name="BillingAddress">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Load Sales\Merge Join 1.Inputs[Merge Join Right Input].Columns[BillingAddress]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[BillingCity]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[BillingCity]"
+                      name="BillingCity">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Load Sales\Merge Join 1.Inputs[Merge Join Right Input].Columns[BillingCity]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[BillingState]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[BillingState]"
+                      name="BillingState">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Load Sales\Merge Join 1.Inputs[Merge Join Right Input].Columns[BillingState]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[BillingCountry]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[BillingCountry]"
+                      name="BillingCountry">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Load Sales\Merge Join 1.Inputs[Merge Join Right Input].Columns[BillingCountry]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[BillingPostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[BillingPostalCode]"
+                      name="BillingPostalCode">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Load Sales\Merge Join 1.Inputs[Merge Join Right Input].Columns[BillingPostalCode]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[TrackId]"
+                      dataType="i4"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[TrackId]"
+                      name="TrackId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Load Sales\Merge Join 1.Inputs[Merge Join Left Input].Columns[TrackId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[UnitPrice]"
+                      dataType="numeric"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[UnitPrice]"
+                      name="UnitPrice"
+                      precision="10"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Load Sales\Merge Join 1.Inputs[Merge Join Left Input].Columns[UnitPrice]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[Quantity]"
+                      dataType="i4"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[Quantity]"
+                      name="Quantity">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Load Sales\Merge Join 1.Inputs[Merge Join Left Input].Columns[Quantity]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[Total]"
+                      dataType="numeric"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[Total]"
+                      name="Total"
+                      precision="10"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Load Sales\Merge Join 1.Inputs[Merge Join Right Input].Columns[Total]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Sales\Sales"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Sales"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Sales]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1253</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Sales\Sales.Connections[OleDbConnection]"
+                  connectionManagerID="{D21744DC-0689-42D1-A1B3-F8EEC719D864}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[(local).MelodicaDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].Columns[InvoiceId]"
+                      cachedDataType="i4"
+                      cachedName="InvoiceId"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceId]"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[InvoiceId]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].Columns[CustomerId]"
+                      cachedDataType="i4"
+                      cachedName="CustomerId"
+                      externalMetadataColumnId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[CustomerId]"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[CustomerId]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].Columns[InvoiceDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="InvoiceDate"
+                      externalMetadataColumnId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[InvoiceDate]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].Columns[BillingAddress]"
+                      cachedDataType="wstr"
+                      cachedLength="70"
+                      cachedName="BillingAddress"
+                      externalMetadataColumnId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[BillingAddress]"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[BillingAddress]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].Columns[BillingCity]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="BillingCity"
+                      externalMetadataColumnId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[BillingCity]"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[BillingCity]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].Columns[BillingState]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="BillingState"
+                      externalMetadataColumnId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[BillingState]"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[BillingState]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].Columns[BillingCountry]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="BillingCountry"
+                      externalMetadataColumnId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[BillingCountry]"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[BillingCountry]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].Columns[BillingPostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="BillingPostalCode"
+                      externalMetadataColumnId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[BillingPostalCode]"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[BillingPostalCode]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].Columns[TrackId]"
+                      cachedDataType="i4"
+                      cachedName="TrackId"
+                      externalMetadataColumnId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[TrackId]"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[TrackId]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].Columns[UnitPrice]"
+                      cachedDataType="numeric"
+                      cachedName="UnitPrice"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[UnitPrice]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].Columns[Quantity]"
+                      cachedDataType="i4"
+                      cachedName="Quantity"
+                      externalMetadataColumnId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[Quantity]" />
+                    <inputColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].Columns[Total]"
+                      cachedDataType="numeric"
+                      cachedName="Total"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[Total]"
+                      lineageId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output].Columns[Total]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceId]"
+                      dataType="i4"
+                      name="InvoiceId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[CustomerId]"
+                      dataType="i4"
+                      name="CustomerId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[InvoiceDate]"
+                      dataType="dbTimeStamp"
+                      name="InvoiceDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[BillingAddress]"
+                      dataType="wstr"
+                      length="70"
+                      name="BillingAddress" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[BillingCity]"
+                      dataType="wstr"
+                      length="40"
+                      name="BillingCity" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[BillingState]"
+                      dataType="wstr"
+                      length="40"
+                      name="BillingState" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[BillingCountry]"
+                      dataType="wstr"
+                      length="40"
+                      name="BillingCountry" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[BillingPostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="BillingPostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[TrackId]"
+                      dataType="i4"
+                      name="TrackId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
+                      dataType="numeric"
+                      name="UnitPrice"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      dataType="i4"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input].ExternalColumns[Total]"
+                      dataType="numeric"
+                      name="Total"
+                      precision="10"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Sales\Sales.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Sales\Sales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Sales\Sales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Sales\Sales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Sales\Sales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Sales\Sort 1 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 1 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load Sales\Sort 1 1.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Sales\Sort 1 1.Inputs[Sort Input].Columns[InvoiceId]"
+                      cachedDataType="i4"
+                      cachedName="InvoiceId"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[InvoiceId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Sales\Sort 1 1.Inputs[Sort Input].Columns[CustomerId]"
+                      cachedDataType="i4"
+                      cachedName="CustomerId"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[CustomerId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Sales\Sort 1 1.Inputs[Sort Input].Columns[InvoiceDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="InvoiceDate"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[InvoiceDate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Sales\Sort 1 1.Inputs[Sort Input].Columns[BillingAddress]"
+                      cachedDataType="wstr"
+                      cachedLength="70"
+                      cachedName="BillingAddress"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[BillingAddress]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Sales\Sort 1 1.Inputs[Sort Input].Columns[BillingCity]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="BillingCity"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[BillingCity]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">5</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Sales\Sort 1 1.Inputs[Sort Input].Columns[BillingState]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="BillingState"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[BillingState]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">6</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Sales\Sort 1 1.Inputs[Sort Input].Columns[BillingCountry]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="BillingCountry"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[BillingCountry]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">7</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Sales\Sort 1 1.Inputs[Sort Input].Columns[BillingPostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="BillingPostalCode"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[BillingPostalCode]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">8</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Sales\Sort 1 1.Inputs[Sort Input].Columns[Total]"
+                      cachedDataType="numeric"
+                      cachedName="Total"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[Total]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">9</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Sales\Sort 1 1.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[InvoiceId]"
+                      dataType="i4"
+                      lineageId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[InvoiceId]"
+                      name="InvoiceId"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[InvoiceId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[CustomerId]"
+                      dataType="i4"
+                      lineageId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[CustomerId]"
+                      name="CustomerId"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[CustomerId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[InvoiceDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[InvoiceDate]"
+                      name="InvoiceDate"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[InvoiceDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[BillingAddress]"
+                      dataType="wstr"
+                      length="70"
+                      lineageId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[BillingAddress]"
+                      name="BillingAddress"
+                      sortKeyPosition="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[BillingAddress]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[BillingCity]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[BillingCity]"
+                      name="BillingCity"
+                      sortKeyPosition="5">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[BillingCity]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[BillingState]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[BillingState]"
+                      name="BillingState"
+                      sortKeyPosition="6">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[BillingState]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[BillingCountry]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[BillingCountry]"
+                      name="BillingCountry"
+                      sortKeyPosition="7">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[BillingCountry]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[BillingPostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[BillingPostalCode]"
+                      name="BillingPostalCode"
+                      sortKeyPosition="8">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[BillingPostalCode]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[Total]"
+                      dataType="numeric"
+                      lineageId="Package\Load Sales\Sort 1 1.Outputs[Sort Output].Columns[Total]"
+                      name="Total"
+                      precision="10"
+                      scale="2"
+                      sortKeyPosition="9">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output].Columns[Total]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Sales\Sort 2"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 2"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load Sales\Sort 2.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Sales\Sort 2.Inputs[Sort Input].Columns[InvoiceLineId]"
+                      cachedDataType="i4"
+                      cachedName="InvoiceLineId"
+                      lineageId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].Columns[InvoiceLineId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Sales\Sort 2.Inputs[Sort Input].Columns[InvoiceId]"
+                      cachedDataType="i4"
+                      cachedName="InvoiceId"
+                      lineageId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].Columns[InvoiceId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Sales\Sort 2.Inputs[Sort Input].Columns[TrackId]"
+                      cachedDataType="i4"
+                      cachedName="TrackId"
+                      lineageId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].Columns[TrackId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Sales\Sort 2.Inputs[Sort Input].Columns[UnitPrice]"
+                      cachedDataType="numeric"
+                      cachedName="UnitPrice"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].Columns[UnitPrice]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Sales\Sort 2.Inputs[Sort Input].Columns[Quantity]"
+                      cachedDataType="i4"
+                      cachedName="Quantity"
+                      lineageId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].Columns[Quantity]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">5</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Sales\Sort 2.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Sales\Sort 2.Outputs[Sort Output].Columns[InvoiceLineId]"
+                      dataType="i4"
+                      lineageId="Package\Load Sales\Sort 2.Outputs[Sort Output].Columns[InvoiceLineId]"
+                      name="InvoiceLineId"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].Columns[InvoiceLineId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Sort 2.Outputs[Sort Output].Columns[InvoiceId]"
+                      dataType="i4"
+                      lineageId="Package\Load Sales\Sort 2.Outputs[Sort Output].Columns[InvoiceId]"
+                      name="InvoiceId"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].Columns[InvoiceId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Sort 2.Outputs[Sort Output].Columns[TrackId]"
+                      dataType="i4"
+                      lineageId="Package\Load Sales\Sort 2.Outputs[Sort Output].Columns[TrackId]"
+                      name="TrackId"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].Columns[TrackId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Sort 2.Outputs[Sort Output].Columns[UnitPrice]"
+                      dataType="numeric"
+                      lineageId="Package\Load Sales\Sort 2.Outputs[Sort Output].Columns[UnitPrice]"
+                      name="UnitPrice"
+                      precision="10"
+                      scale="2"
+                      sortKeyPosition="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].Columns[UnitPrice]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Sales\Sort 2.Outputs[Sort Output].Columns[Quantity]"
+                      dataType="i4"
+                      lineageId="Package\Load Sales\Sort 2.Outputs[Sort Output].Columns[Quantity]"
+                      name="Quantity"
+                      sortKeyPosition="5">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output].Columns[Quantity]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Sales.Paths[Merge Join Output]"
+              endId="Package\Load Sales\Sales.Inputs[OLE DB Destination Input]"
+              name="Merge Join Output"
+              startId="Package\Load Sales\Merge Join 1.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Load Sales.Paths[OLE DB Source Output]"
+              endId="Package\Load Sales\Sort 1 1.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Sales\Invoice Table.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Load Sales.Paths[OLE DB Source Output1]"
+              endId="Package\Load Sales\Sort 2.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Sales\InvoiceLine Table.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Load Sales.Paths[Sort Output]"
+              endId="Package\Load Sales\Merge Join 1.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Load Sales\Sort 2.Outputs[Sort Output]" />
+            <path
+              refId="Package\Load Sales.Paths[Sort Output1]"
+              endId="Package\Load Sales\Merge Join 1.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Load Sales\Sort 1 1.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{3A3F4092-95E0-406A-94CE-146EC12025E5}"
+      DTS:From="Package\Create Sales"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load Sales"
+      DTS:Value="2" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="136.8,41.6"
+          Id="Package\Create Sales"
+          TopLeft="107.857143086742,42.8235293742282" />
+        <NodeLayout
+          Size="128.8,41.6"
+          Id="Package\Load Sales"
+          TopLeft="111.428571665774,149.882352809799" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="176.042857376258,84.4235293742282">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65.4588234355708"
+              Start="0,0"
+              End="0,57.9588234355708">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.9588234355708" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-25.304453125,23.1747242177854,50.60890625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load Sales">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160.8,41.6"
+          Id="Package\Load Sales\InvoiceLine Table"
+          TopLeft="178.57142895156,70.3529411148034" />
+        <NodeLayout
+          Size="106.4,41.6"
+          Id="Package\Load Sales\Sort 1 1"
+          TopLeft="585.714286961118,170.52941161523" />
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\Load Sales\Sort 2"
+          TopLeft="258.571429121859,169.764705733548" />
+        <NodeLayout
+          Size="138.4,41.6"
+          Id="Package\Load Sales\Merge Join 1"
+          TopLeft="428.571429483745,256.941176245369" />
+        <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\Load Sales\Invoice Table"
+          TopLeft="492.857143906307,66.5294117063904" />
+        <NodeLayout
+          Size="102.4,41.6"
+          Id="Package\Load Sales\Sales"
+          TopLeft="478.607143307599,322.882352684454" />
+        <EdgeLayout
+          Id="Package\Load Sales.Paths[Sort Output1]"
+          TopLeft="638.914286961118,212.12941161523">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-119.40952414404,44.811764630139"
+              Start="0,0"
+              End="-119.40952414404,37.311764630139">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5797781063338" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.5797781063338"
+                    Point2="0,26.5797781063338"
+                    Point3="-4,26.5797781063338" />
+                  <mssgle:LineSegment
+                    End="-115.40952414404,26.5797781063338" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-115.40952414404,26.5797781063338"
+                    Point2="-119.40952414404,26.5797781063338"
+                    Point3="-119.40952414404,30.5797781063338" />
+                  <mssgle:LineSegment
+                    End="-119.40952414404,37.311764630139" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Sales.Paths[Sort Output]"
+          TopLeft="307.371429121859,211.364705733548">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="168.666667028553,45.576470511821"
+              Start="0,0"
+              End="168.666667028553,38.076470511821">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.0333579378687" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.0333579378687"
+                    Point2="0,27.0333579378687"
+                    Point3="4,27.0333579378687" />
+                  <mssgle:LineSegment
+                    End="164.666667028553,27.0333579378687" />
+                  <mssgle:CubicBezierSegment
+                    Point1="164.666667028553,27.0333579378687"
+                    Point2="168.666667028553,27.0333579378687"
+                    Point3="168.666667028553,31.0333579378687" />
+                  <mssgle:LineSegment
+                    End="168.666667028553,38.076470511821" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Sales.Paths[OLE DB Source Output1]"
+          TopLeft="258.97142895156,111.952941114803">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="48.400000170299,57.8117646187441"
+              Start="0,0"
+              End="48.400000170299,50.3117646187441">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.9058823093721" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.9058823093721"
+                    Point2="0,28.9058823093721"
+                    Point3="4,28.9058823093721" />
+                  <mssgle:LineSegment
+                    End="44.400000170299,28.9058823093721" />
+                  <mssgle:CubicBezierSegment
+                    Point1="44.400000170299,28.9058823093721"
+                    Point2="48.400000170299,28.9058823093721"
+                    Point3="48.400000170299,32.9058823093721" />
+                  <mssgle:LineSegment
+                    End="48.400000170299,50.3117646187441" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Sales.Paths[OLE DB Source Output]"
+          TopLeft="563.657143906307,108.12941170639">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="75.2571430548111,62.3999999088399"
+              Start="0,0"
+              End="75.2571430548111,54.8999999088399">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.19999995442" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.19999995442"
+                    Point2="0,31.19999995442"
+                    Point3="4,31.19999995442" />
+                  <mssgle:LineSegment
+                    End="71.2571430548111,31.19999995442" />
+                  <mssgle:CubicBezierSegment
+                    Point1="71.2571430548111,31.19999995442"
+                    Point2="75.2571430548111,31.19999995442"
+                    Point3="75.2571430548111,35.19999995442" />
+                  <mssgle:LineSegment
+                    End="75.2571430548111,54.8999999088399" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Sales.Paths[Merge Join Output]"
+          TopLeft="497.771429483745,298.541176245369">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="32.0357138238541,24.341176439085"
+              Start="0,0"
+              End="32.0357138238541,16.841176439085">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.17058821954251" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.17058821954251"
+                    Point2="0,12.1705882195425"
+                    Point3="4,12.1705882195425" />
+                  <mssgle:LineSegment
+                    End="28.0357138238541,12.1705882195425" />
+                  <mssgle:CubicBezierSegment
+                    Point1="28.0357138238541,12.1705882195425"
+                    Point2="32.0357138238541,12.1705882195425"
+                    Point3="32.0357138238541,16.1705882195425" />
+                  <mssgle:LineSegment
+                    End="32.0357138238541,16.841176439085" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Sales\Sales">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
